@@ -82,7 +82,7 @@ angular.module('starter.controllers', [])
 })
 
 
-    .controller('AtualizarEventoCtrl', function($scope,$stateParams,$http) {
+    .controller('AtualizarEventoCtrl', function($scope,$stateParams,$http,$state) {
 
         var evento_id = ($stateParams.evento_id);
         $scope.evento_id = evento_id;
@@ -94,6 +94,7 @@ angular.module('starter.controllers', [])
         $scope.atualizar_evento = function (Evento){
           $http.post('http://api-eden.cursophprj.com.br/eventos/update',{'id':Evento.id,'titulo':Evento.titulo,sub_titulo:Evento.sub_titulo,'descricao':Evento.descricao,'data_evento':Evento.data_evento});
             alert("Evento atualizado com sucesso");
+            $state.go("app.eventos");
 
         }
     })
