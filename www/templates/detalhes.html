@@ -1,0 +1,11 @@
+<ion-view view-title="Detalhes do Evento">
+  <ion-content>
+    <h1>{{evento_selecionado.titulo}} </h1>
+    <h2>{{evento_selecionado.sub_titulo}}</h2>
+
+    <p ng-bind-html="evento_selecionado.descricao">
+    </p>
+
+    <img src="http://api-eden.cursophprj.com.br/img/eventos/{{evento_selecionado.img}}">
+  </ion-content>
+</ion-view>

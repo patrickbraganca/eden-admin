@@ -1,0 +1,30 @@
+<ion-view view-title="Novo Evento">
+  <ion-content>
+     <h3>Novo evento</h3>
+
+      <form ng-submit="adicionar_evento(Evento)">
+        <div class="list">
+        <label class="item item-input item-floating-label">
+            <span class="input-label">data</span>
+            <input type="text" placeholder="digite a data do evento" ng-model="Evento.data_evento">
+        </label>
+          <label class="item item-input item-floating-label">
+            <span class="input-label">Nome do evento</span>
+            <input type="text" placeholder="Nome do evento" ng-model="Evento.titulo">
+          </label>
+          <label class="item item-input item-floating-label">
+            <span class="input-label">sub titulo</span>
+            <input type="text" placeholder="qual e o sub titulo" ng-model="Evento.sub_titulo" >
+          </label>
+          <label class="item item-input item-floating-label">
+            <span class="input-label">descricao</span>
+            <textarea placeholder="descricao do evento"></textarea>
+          </label>
+          <div class="padding">
+            <button  class="button button-block button-positive">Salvar </button>
+          </div>
+        </div>
+      </form>
+
+  </ion-content>
+</ion-view>

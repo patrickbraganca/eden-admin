@@ -1,0 +1,18 @@
+<ion-view view-title="Eventos" ng-init="listarTodosEventos()">
+  <ion-content>
+     <ion-list>
+         <a class="button" href="http://localhost:8100/#/app/novo_evento">Novo</a>
+        <ion-item ng-repeat="x in eventos" href="#/app/detalhes/{{x.id}}">
+
+            <img src="http://api-eden.cursophprj.com.br/img/eventos/{{x.img}}" width="100px">
+         {{x.titulo}}-
+         {{x.data_evento}}
+
+           <a href="#" ng-click="excluir_evento(x.id)">Exluir</a>
+           <a href="#/app/atualizar_evento/{{x.id}}">atualizar</a>
+
+        </ion-item>
+    </ion-list>
+
+  </ion-content>
+</ion-view>
