@@ -42,6 +42,15 @@ angular.module('starter.controllers', [])
 })
   .controller('NovoEventoCtrl', function($scope,$http) {
 
+
+        $scope.data_hoje = function(){
+            var data = new Date();
+            var dia = data.getDate();
+            var mes = data.getMonth() + 1;
+            var ano = data.getFullYear();
+            return [dia, mes, ano].join('/');
+        };
+
       $scope.adicionar_evento = function (Evento){
 
 

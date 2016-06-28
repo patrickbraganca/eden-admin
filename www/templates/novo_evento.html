@@ -1,5 +1,5 @@
 <ion-view view-title="Novo Evento">
-  <ion-content>
+  <ion-content ng-init="Evento.data_evento=data_hoje()">
      <h3>Novo evento</h3>
 
       <form ng-submit="adicionar_evento(Evento)">
