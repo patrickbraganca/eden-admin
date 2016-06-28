@@ -55,13 +55,29 @@ angular.module('starter.controllers', [])
 
 .controller('EventosCtrl', function($scope,$http) {
 
-    $http.get("http://api-eden.cursophprj.com.br/eventos") .then(function(response)
-    {$scope.eventos = (response.data.eventos)
+    //criei a listagem do eventos dentro de uma funcao para que ela seja chamada no ng-init na view
+    $scope.listarTodosEventos = function(){
+        $http.get("http://api-eden.cursophprj.com.br/eventos") .then(function(response)
+        {
+            $scope.eventos = (response.data.eventos)
 
-    });
+        });
+    }
+
         $scope.excluir_evento = function (id){
-            $http.post('http://api-eden.cursophprj.com.br/eventos/delete',{'id':id});
-                alert("excluido com sucesso!");
+            $http.post('http://api-eden.cursophprj.com.br/eventos/delete', {'id':id})
+                .success(function (){
+                    //desse jeito o listar todos os eventos e executado somente depois de concluir a operacao de exclusao
+                    alert("excluido com sucesso!");
+                    $scope.listarTodosEventos();
+                }
+            );
+
+
+            //assim antes de concluir a exclusao o eventos para listar todos e chamado
+            //$http.post('http://api-eden.cursophprj.com.br/eventos/delete',{'id':id});
+            //alert("excluido com sucesso!");
+            //$scope.listarTodosEventos(); //chamei a funcao para carregar todos os eventos apos excluir
         }
 })
 
