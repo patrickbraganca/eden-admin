@@ -20,6 +20,10 @@
             <span class="input-label">descricao</span>
             <textarea placeholder="descricao do evento" ng-model="Evento.descricao"></textarea>
           </label>
+        <label class="item item-input item-floating-label">
+            <span class="input-label">Foto do documento</span>
+            <input name="file" type="file" file-model="Evento.img"/>
+        </label>
           <div class="padding">
             <button  class="button button-block button-positive">Salvar </button>
           </div>

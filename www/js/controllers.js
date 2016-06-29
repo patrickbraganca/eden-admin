@@ -40,7 +40,7 @@ angular.module('starter.controllers', [])
     }, 1000);
   };
 })
-  .controller('NovoEventoCtrl', function($scope,$http) {
+  .controller('NovoEventoCtrl', function($scope,$http,$state,EventoService) {
 
 
         $scope.data_hoje = function(){
@@ -51,13 +51,14 @@ angular.module('starter.controllers', [])
             return [dia, mes, ano].join('/');
         };
 
-      $scope.adicionar_evento = function (Evento){
-
-
-        $http.post('http://api-eden.cursophprj.com.br/eventos/insert', {'titulo':Evento.titulo,'sub_titulo':Evento.sub_titulo,'descricao':Evento.descricao,'data_evento':Evento.data_evento});
-
-          alert ("Evento adicionado com sucesso")
-
+            $scope.adicionar_evento = function (Evento){
+                var url_upload = "http://api-eden.cursophprj.com.br/eventos/insert";
+                EventoService.add(Evento,url_upload);
+                /*
+                $http.post('http://api-eden.cursophprj.com.br/eventos/insert', {'titulo':Evento.titulo,'sub_titulo':Evento.sub_titulo,'descricao':Evento.descricao,'data_evento':Evento.data_evento});
+                alert ("Evento adicionado com sucesso");
+                $state.go("app.eventos");
+                */
             }
        })
 
@@ -71,7 +72,7 @@ angular.module('starter.controllers', [])
             $scope.eventos = (response.data.eventos)
 
         });
-    }
+    };
 
         $scope.excluir_evento = function (id){
             $http.post('http://api-eden.cursophprj.com.br/eventos/delete', {'id':id})
